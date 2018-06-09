@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-post',
@@ -8,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class PostComponent implements OnInit {
 
   constructor() { }
+  actions = new EventEmitter<string|MaterializeAction>();
 
+  openModal() {
+    this.actions.emit({action:"modal1",params:['open']});
+  }
+  closeModal() {
+    this.actions.emit({action:"modal1",params:['close']});
+  }
   ngOnInit() {
   }
 
