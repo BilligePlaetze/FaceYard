@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from "./../model/post";
 
 @Component({
-  selector: 'app-main-frame',
+  selector: 'main-frame',
   templateUrl: './main-frame.component.html',
   styleUrls: ['./main-frame.component.css']
 })
+
 export class MainFrameComponent implements OnInit {
 
-  constructor() { }
+posts : Post[];
 
-  ngOnInit() {
-  }
+ngOnInit(): void {
+  let post : Post; 
+  post.title = "Test Title";
+  post.text = "lorem ipsum dolor amet";
+  this.posts[0] = post;
+  this.posts[1] = post;
+  this.posts[2] = post;
+}
 
 }
