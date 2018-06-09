@@ -9,13 +9,19 @@ import { MaterializeAction } from 'angular2-materialize';
 export class PostComponent implements OnInit {
 
   constructor() { }
-  actions = new EventEmitter<string|MaterializeAction>();
-
-  openModal() {
-    this.actions.emit({action:"modal1",params:['open']});
+  modalActions1 = new EventEmitter<string|MaterializeAction>();
+  
+  model1Params = [
+    {
+      dismissible: false,
+      complete: function() { console.log('Closed'); }
+    }
+  ]
+  openModal1() {
+    this.modalActions1.emit({action:"modal",params:['open']});
   }
-  closeModal() {
-    this.actions.emit({action:"modal1",params:['close']});
+  closeModal1() {
+    this.modalActions1.emit({action:"modal",params:['close']});
   }
   ngOnInit() {
   }

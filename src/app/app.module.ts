@@ -13,6 +13,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { MainFrameComponent } from './main-frame/main-frame.component';
 
+import { PostServiceService } from './services/post-service.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { MainFrameComponent } from './main-frame/main-frame.component';
     MaterializeModule, 
     HttpModule
   ],
-  providers: [],
+  providers: [
+    PostServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
