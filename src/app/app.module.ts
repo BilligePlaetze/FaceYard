@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MaterializeModule } from "angular2-materialize"; 
 
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
@@ -9,7 +10,6 @@ import { QueryComponent } from './query/query.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { ServiceComponent } from './service/service.component';
 import { MainFrameComponent } from './main-frame/main-frame.component';
 
 @NgModule({
@@ -22,11 +22,11 @@ import { MainFrameComponent } from './main-frame/main-frame.component';
     NewsFeedComponent,
     SettingsComponent,
     TutorialComponent,
-    ServiceComponent,
     MainFrameComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterializeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
