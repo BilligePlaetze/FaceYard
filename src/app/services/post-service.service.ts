@@ -1,9 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Response, Http, Headers } from '@angular/http';
+import { Post } from "./../model/post";
 
-@Injectable({
-  providedIn: 'root'
-})
+import 'rxjs/Rx';
+import { Observable } from 'rxjs';
+
+const POST_BASE_URL = "";
+@Injectable()
 export class PostServiceService {
+ 
+ constructor(private http : Http) {}
+ 
+  getPosts(post : Post) {
+    return this.http.get(POST_BASE_URL)
+    .map((res: Response) => res.json())
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+}
 
-  constructor() { }
+deletePost(post: Post): Observable<Response> {
+    return this.http.delete(POST_BASE_URL)
+    .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+}
+
+createFeature(post : Post) {
+    return this.http.post(POST_BASE_URL, post)
+        .map(res => res.json());
+}
+
 }
