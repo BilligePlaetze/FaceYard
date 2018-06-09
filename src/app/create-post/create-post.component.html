@@ -11,13 +11,13 @@
         </div>
         <div class="col center-align">
           <div class="col small-padding">
-            <a class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">map</i></a>
+            <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light blue" data-activates="location"><i class="material-icons">map</i></a>
           </div>
           <div class="col small-padding">
-            <a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">local_florist</i></a>
+            <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light green" data-activates="grapes"><i class="material-icons">local_florist</i></a>
           </div>
             <div class="col small-padding">
-            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">assistant_photo</i></a>
+            <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light red" data-activates="hashtags"><i class="material-icons">assistant_photo</i></a>
           </div>
           </div>
         <div class="col">
@@ -26,3 +26,24 @@
         </div>
     </form>
   </div>
+
+  <!-- Location Dropdown Structure -->
+  <ul id='location' class='dropdown-content size-dropdown'>
+    <li><a>regional</a></li>
+    <li><a>national</a></li>
+    <li><a>international</a></li>
+  </ul>
+
+  <!-- Location Dropdown Structure -->
+  <ul id='grapes' class='dropdown-content size-dropdown'>
+          <li *ngFor="let grape of settings.grapes">
+            <a>{{ grape }}</a>
+          </li>
+  </ul>
+
+  <!-- Location Dropdown Structure -->
+  <ul id='hashtags' class='dropdown-content size-dropdown'>
+      <li *ngFor="let hashtags of settings.hashtags">
+          <a>{{ hashtags }}</a>
+        </li>
+  </ul>

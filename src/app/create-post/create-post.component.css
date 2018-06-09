@@ -1,3 +1,7 @@
 .small-padding{
     padding: 8px;
 }
+
+.size-dropdown{
+    width: 160px !important;
+}
