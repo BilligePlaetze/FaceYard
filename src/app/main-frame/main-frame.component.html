@@ -45,15 +45,31 @@
     </ul>
 
     <div id="modal1" class="modal" materialize="modal" [materializeParams]="model1Params" [materializeActions]="modalActions1">
-        <div class="modal-content">
+      <div class="modal-header right">
+        <a class="waves-effect waves-green btn-flat" (click)="closeModal1()">Close</a>
+      </div>  
+      <div class="modal-content">
           <app-post [childTitle]="parentTitle"></app-post>
-        </div>
-        <div class="modal-footer">
-          <a class="waves-effect waves-green btn-flat" (click)="closeModal1()">Close</a>
-        </div>
-        <div class="modal-content">
-            <app-comment [childTitle]="parentTitle"></app-comment>
-        </div>
+          <div class="row valign-wrapper">
+            <div class="col s9">
+              <div class="input-field">
+                  <textarea maxlength="160" id="text" class="materialize-textarea"></textarea>
+                  <label for="text">Dein Kommentar</label>
+              </div>
+            </div>
+            <div class="col s3">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+              </button> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <app-comment [childTitle]="parentTitle"></app-comment>
+            </div>
+          </div>
+      </div>
     </div>
+
   </div>
 </div>
