@@ -38,7 +38,7 @@ export class MainFrameComponent implements OnInit {
 
     let post : Post = new Post();
     let post2 : Post = new Post();
-    post.title = "Test Title";
+    post.title = "Test Title which is very very very teribly long because wine people don't write short titles";
     post.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
     post2.title = "Testing testing";
     post2.text = "Roses are red, wine is also red. Poems are hard. Wine.";
