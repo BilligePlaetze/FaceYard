@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from "./../model/post";
+import { CreatePostComponent } from '../create-post/create-post.component';
 
 @Component({
   selector: 'main-frame',
@@ -9,15 +10,14 @@ import { Post } from "./../model/post";
 
 export class MainFrameComponent implements OnInit {
 
-posts : Post[];
-
+settings : Post;
 ngOnInit(): void {
-  let post : Post; 
-  post.title = "Test Title";
-  post.text = "lorem ipsum dolor amet";
-  this.posts[0] = post;
-  this.posts[1] = post;
-  this.posts[2] = post;
+  
+  this.settings = new Post();
+  this.settings.author = "Helmut Scharnweber";
+  this.settings.grapes = ["Riesling", "Pinot Noir"];
+  this.settings.hashtags = ["Schädlingsbefall","Technik"];
+  this.settings.location = "regional";
 }
 
 }
