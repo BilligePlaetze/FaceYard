@@ -22,6 +22,7 @@ export class MainFrameComponent implements OnInit {
 
   settings : Post;
   posts : Array<Post> = [];
+  savedPosts : Array<Post>;
   newComment : string;
   parentTitle : Post;
   liked : boolean[];
@@ -68,6 +69,10 @@ export class MainFrameComponent implements OnInit {
     this.updatePost(this.parentTitle);
   }
 
+  mockBehavoir(start: number, end: number) {
+    this.posts = this.savedPosts.slice(start, end);
+  }
+
   ngOnInit(): void {
     this.settings = new Post();
     this.settings.winzelGraps = [];
@@ -77,11 +82,15 @@ export class MainFrameComponent implements OnInit {
     this.winzelHashTag = new WinzelHashTags();
     this.winzelHashTag2 = new WinzelHashTags();
 
-    this.pss.getPosts().subscribe(x => this.posts = x, 
-    err => {
+    this.pss.getPosts().subscribe( 
+      data => {
+        this.posts = data;
+        this.savedPosts = this.posts.map(x => Object.assign({}, x));
+      }, 
+      err => {
       console.log(err);
     });
-
+    
     this.liked = new Array<boolean>(this.posts.length);
 
     this.settings = new Post();
