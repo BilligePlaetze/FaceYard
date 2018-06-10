@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
 import { PostServiceService } from './../services/post-service.service';
+import {WinzelHashTags} from "./../model/hashTags";
+import {WinzelGraps} from "./../model/winzelGraps";
 
 @Component({
   selector: 'main-frame',
@@ -19,7 +21,8 @@ export class MainFrameComponent implements OnInit {
   posts : Array<Post> = [];
   parentTitle : Post;
   modalActions1 = new EventEmitter<string|MaterializeAction>();
-  
+  currentHashTags = new WinzelHashTags();
+
   model1Params = [
     {
       dismissible: false,
@@ -39,6 +42,10 @@ export class MainFrameComponent implements OnInit {
     this.pss.updatePost(p).subscribe();
   } 
 
+  sendComment() {
+    
+  }
+
   ngOnInit(): void {
     this.pss.getPosts().subscribe(x => this.posts = x, 
     err => {
@@ -46,12 +53,12 @@ export class MainFrameComponent implements OnInit {
     });
 
     this.settings = new Post();
-    this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
-    this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
+    //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
+    //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
     this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
     this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
-    this.settings.winzelLocation = "regional";
+    //this.settings.winzelLocation = "regional";
 
     // let post : Post = new Post();
     // let post2 : Post = new Post();

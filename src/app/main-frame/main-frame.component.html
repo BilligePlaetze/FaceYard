@@ -63,15 +63,31 @@
     </ul>
 
     <div id="modal1" class="modal" materialize="modal" [materializeParams]="model1Params" [materializeActions]="modalActions1">
-        <div class="modal-content">
+      <div class="modal-header right">
+        <a class="waves-effect waves-green btn-flat" (click)="closeModal1()">Schließen</a>
+      </div>  
+      <div class="modal-content">
           <app-post [childTitle]="parentTitle"></app-post>
-        </div>
-        <div class="modal-footer">
-          <a class="waves-effect waves-green btn-flat" (click)="closeModal1()">Close</a>
-        </div>
-        <div class="modal-content">
-            <app-comment [childTitle]="parentTitle"></app-comment>
-        </div>
+          <div class="row valign-wrapper">
+            <div class="col s9 inputfield">
+              <div class="input-field">
+                  <textarea maxlength="160" id="text" class="materialize-textarea"></textarea>
+                  <label for="text">Dein Kommentar</label>
+              </div>
+            </div>
+            <div class="col s3  buttonpadded">
+              <button class="btn waves-effect waves-light light-green darken-2 right" type="submit" name="action" (click)="sendComment()">Senden
+                  <i class="material-icons right">send</i>
+              </button> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <app-comment [childTitle]="parentTitle"></app-comment>
+            </div>
+          </div>
+      </div>
     </div>
+
   </div>
 </div>

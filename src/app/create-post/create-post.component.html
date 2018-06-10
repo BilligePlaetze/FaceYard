@@ -2,11 +2,11 @@
     <form class="col s12">
       <div class="row valign-wrapper">
         <div class="input-field col s3">
-          <textarea maxlength="160" id="title" class="materialize-textarea"></textarea>
+          <textarea maxlength="160" id="title" class="materialize-textarea" [(ngModel)]="currentPost.winzelTitle" name="title"></textarea>
           <label for="title">Überschrift</label>
         </div>
         <div class="input-field col s5">
-          <textarea maxlength="1500" id="textarea" class="materialize-textarea"></textarea>
+          <textarea maxlength="1500" id="textarea" class="materialize-textarea" [(ngModel)]="currentPost.winzelText" name="text"></textarea>
           <label for="textarea">Beschreibung</label>
         </div>
         <div class="center-align">
@@ -17,7 +17,7 @@
             <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light pink darken-4" data-activates="grapes"><i class="material-icons">local_florist</i></a>
           </div>
             <div class="col small-padding">
-            <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light pink darken-4" data-activates="hashtags"><i class="material-icons">assistant_photo</i></a>
+            <a materialize="dropdown" class="btn-floating btn-large waves-effect waves-light pink darken-4" data-activates="hashtag"><i class="material-icons">assistant_photo</i></a>
           </div>
           </div>
         <div class="col">
@@ -30,21 +30,21 @@
 
   <!-- Location Dropdown Structure -->
   <ul id='location' class='dropdown-content size-dropdown'>
-    <li><a class="light-green-text text-darken-2">regional</a></li>
-    <li><a class="light-green-text text-darken-2">national</a></li>
-    <li><a class="light-green-text text-darken-2">international</a></li>
+    <li><a class="light-green-text text-darken-2" (click)="setLocation('regional')">regional</a></li>
+    <li><a class="light-green-text text-darken-2"(click)="setLocation('national')">national</a></li>
+    <li><a class="light-green-text text-darken-2"(click)="setLocation('international')">international</a></li>
   </ul>
 
   <!-- Location Dropdown Structure -->
   <ul id='grapes' class='dropdown-content size-dropdown '>
           <li *ngFor="let grape of settings.winzelGraps">
-            <a class="light-green-text text-darken-2">{{ grape }}</a>
+            <a class="light-green-text text-darken-2" (click)="setGraps(grape)">{{ grape }}</a>
           </li>
   </ul>
 
   <!-- Location Dropdown Structure -->
-  <ul id='hashtags' class='dropdown-content size-dropdown' >
-      <li *ngFor="let hashtags of settings.winzelHashTags">
-          <a class="light-green-text text-darken-2">{{ hashtags }}</a>
+  <ul id='hashtag' class='dropdown-content size-dropdown' >
+      <li *ngFor="let hashtag of settings.winzelHashTags">
+          <a class="light-green-text text-darken-2" (click)="setHashtag(hashtag)">{{ hashtag }}</a>
         </li>
   </ul>
