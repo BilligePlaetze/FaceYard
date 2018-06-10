@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
 import { PostServiceService } from './../services/post-service.service';
+import { Comment } from "./../model/comment";
 
 
 @Component({
@@ -18,7 +19,9 @@ export class MainFrameComponent implements OnInit {
 
   settings : Post;
   posts : Array<Post> = [];
+  newComment : string;
   parentTitle : Post;
+  liked : boolean[];
   modalActions1 = new EventEmitter<string|MaterializeAction>();
   
   model1Params = [
@@ -35,13 +38,27 @@ export class MainFrameComponent implements OnInit {
     this.modalActions1.emit({action:"modal",params:['close']});
   }
 
-  updatePost(p : Post) {
-    p.winzelUpvotes ++; 
-    this.pss.updatePost(p).subscribe();
+  like(p : Post) {
+    this.liked[this.posts.indexOf(p)] =!this.liked[this.posts.indexOf(p)];
+    if (!this.liked[this.posts.indexOf(p)]){
+      p.winzelUpvotes --; 
+    } else
+    {
+      p.winzelUpvotes ++; 
+    }
+    this.updatePost(p);
   } 
 
+  updatePost(p : Post) {
+    this.pss.updatePost(p).subscribe();
+  }
+
   sendComment() {
-    
+    let c : Comment = new Comment();
+    c.text = this.newComment;
+    c.date = new Date().toString();
+    this.parentTitle.winzelComments.splice(0,0,c);
+    this.updatePost(this.parentTitle);
   }
 
   ngOnInit(): void {
@@ -50,13 +67,16 @@ export class MainFrameComponent implements OnInit {
       console.log(err);
     });
 
+    this.liked = new Array<boolean>(this.posts.length);
+
     this.settings = new Post();
     //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
     //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
-    this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
+    // this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
     this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
     //this.settings.winzelLocation = "regional";
+  
 
     // let post : Post = new Post();
     // let post2 : Post = new Post();

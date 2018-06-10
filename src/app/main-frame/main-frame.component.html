@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row background">
   <div class="col s10 offset-s1">
     <create-post [settings]="settings"></create-post>  
 
@@ -25,7 +25,7 @@
                         <h6 class="center-align">{{ post.winzelComments.length }}</h6>
                       </div>
                       <div class="col right">
-                          <a class="btn-floating btn-medium waves-effect waves-light pink darken-4" (click)="updatePost(post)"><i class="material-icons">thumb_up</i></a>
+                          <a class="btn-floating btn-medium waves-effect waves-light pink darken-4" (click)="like(post)"><i class="material-icons">{{ !liked[posts.indexOf(post)] ? 'thumb_up' : 'thumb_down'}}</i></a>
                           <h6 class="center-align">{{ post.winzelUpvotes }}</h6>
                       </div>
                     </div>
@@ -53,7 +53,7 @@
           <div class="row valign-wrapper">
             <div class="col s9 inputfield">
               <div class="input-field">
-                  <textarea maxlength="160" id="text" class="materialize-textarea"></textarea>
+                  <textarea maxlength="160" id="text" class="materialize-textarea" [(ngModel)]="newComment" name="commentText"></textarea>
                   <label for="text">Dein Kommentar</label>
               </div>
             </div>
