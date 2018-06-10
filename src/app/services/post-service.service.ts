@@ -32,13 +32,8 @@ createPost(post : Post) {
         .map(res => res.json());
 }
 
-<<<<<<< HEAD
 updatePost(post : Post) : Observable<Response> {
     return this.http.put(POST_BASE_URL + '/' + post.id, post)
     .map(res => res.json());
 }
-
 }
-=======
-}
->>>>>>> f5f8af95a1d984c77381dfc6149b6b1911c3cf5c
