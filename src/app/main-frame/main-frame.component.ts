@@ -39,6 +39,10 @@ export class MainFrameComponent implements OnInit {
     this.pss.updatePost(p).subscribe();
   } 
 
+  sendComment() {
+    
+  }
+
   ngOnInit(): void {
     this.pss.getPosts().subscribe(x => this.posts = x, 
     err => {
