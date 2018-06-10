@@ -13,3 +13,7 @@
 .piccrop {
     max-width: 200px !important;
 }
+
+.piccrop:before {
+    background-image: url("http://www.dlr-mosel.rlp.de/Internet/Bilder/DLR-Repository_0.nsf%2F0%2F157D9219B642D2CBC12581E600321E5F%2F%24File%2F800x400_Weinberg_steillage_Weinhaus_pixabay.jpg");
+}
