@@ -7,6 +7,7 @@ import { Comment } from "./../model/comment";
 import {WinzelHashTags} from "./../model/hashTags";
 import {WinzelGraps} from "./../model/winzelGraps";
 
+
 @Component({
   selector: 'main-frame',
   templateUrl: './main-frame.component.html',
@@ -87,7 +88,6 @@ export class MainFrameComponent implements OnInit {
     //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
     //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
-
     this.winzelGrap.gap = "Riesling";
     this.winzelGrap2.gap = "Dornfelder";
     this.settings.winzelGraps = [this.winzelGrap, this.winzelGrap2];
