@@ -3,6 +3,7 @@ import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
 import { PostServiceService } from './../services/post-service.service';
 
+
 @Component({
   selector: 'main-frame',
   templateUrl: './main-frame.component.html',
@@ -41,12 +42,12 @@ export class MainFrameComponent implements OnInit {
     });
 
     this.settings = new Post();
-    this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
-    this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
+    //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
+    //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
     this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
     this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
-    this.settings.winzelLocation = "regional";
+    //this.settings.winzelLocation = "regional";
 
     // let post : Post = new Post();
     // let post2 : Post = new Post();
