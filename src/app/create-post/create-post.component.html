@@ -21,7 +21,8 @@
           </div>
           </div>
         <div class="col">
-          <a class="waves-effect waves-light btn-large  light-green darken-2">Senden</a>
+          <a class="waves-effect waves-light btn-large light-green darken-2" (click)="sendPost()">Senden</a>
+
         </div>
       </div>
     </form>
@@ -36,14 +37,14 @@
 
   <!-- Location Dropdown Structure -->
   <ul id='grapes' class='dropdown-content size-dropdown '>
-          <li *ngFor="let grape of settings.grapes">
+          <li *ngFor="let grape of settings.winzelGraps">
             <a class="light-green-text text-darken-2">{{ grape }}</a>
           </li>
   </ul>
 
   <!-- Location Dropdown Structure -->
   <ul id='hashtags' class='dropdown-content size-dropdown' >
-      <li *ngFor="let hashtags of settings.hashtags">
+      <li *ngFor="let hashtags of settings.winzelHashTags">
           <a class="light-green-text text-darken-2">{{ hashtags }}</a>
         </li>
   </ul>

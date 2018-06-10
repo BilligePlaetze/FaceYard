@@ -22,14 +22,23 @@ deletePost(post: Post): Observable<Response> {
     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 }
 
-createFeature(post : Post) {
-    return this.http.post(POST_BASE_URL, post)
+createPost(post : Post) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(POST_BASE_URL, post, {
+        headers: headers
+      })
         .map(res => res.json());
 }
 
+<<<<<<< HEAD
 updatePost(post : Post) : Observable<Response> {
     return this.http.put(POST_BASE_URL + '/' + post.id, post)
     .map(res => res.json());
 }
 
 }
+=======
+}
+>>>>>>> f5f8af95a1d984c77381dfc6149b6b1911c3cf5c

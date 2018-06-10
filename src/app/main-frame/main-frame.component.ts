@@ -46,7 +46,9 @@ export class MainFrameComponent implements OnInit {
     });
 
     this.settings = new Post();
-    this.settings.winzelAuthor = "Helmut Scharnweber";
+    this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
+    this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
+    this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
     this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
     this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
     this.settings.winzelLocation = "regional";
