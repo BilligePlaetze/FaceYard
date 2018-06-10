@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
+import { PostServiceService } from './../services/post-service.service';
 
 @Component({
   selector: 'main-frame',
@@ -9,6 +10,10 @@ import { MaterializeAction } from 'angular2-materialize';
 })
 
 export class MainFrameComponent implements OnInit {
+
+  constructor(private pss : PostServiceService) {
+    
+  }
 
   settings : Post;
   posts : Array<Post> = [];
@@ -30,21 +35,28 @@ export class MainFrameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.settings = new Post();
-    this.settings.author = "Helmut Scharnweber";
-    this.settings.grapes = ["Riesling", "Pinot Noir"];
-    this.settings.hashtags = ["Schädlingsbefall","Technik"];
-    this.settings.location = "regional";
+    this.pss.getPosts().subscribe(x => this.posts = x, 
+    err => {
+      console.log(err);
+    });
 
-    let post : Post = new Post();
-    let post2 : Post = new Post();
-    post.title = "Test Title which is very very very teribly long because wine people don't write short titles";
-    post.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-    post.upvotes = 15;
-    post2.title = "Testing testing";
-    post2.text = "Roses are red, wine is also red. Poems are hard. Wine.";
-    post2.upvotes = 24;
-    this.posts[0] = post;
-    this.posts[1] = post2;
+    this.settings = new Post();
+    this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
+    this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
+    this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
+    this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
+    this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
+    this.settings.winzelLocation = "regional";
+
+    // let post : Post = new Post();
+    // let post2 : Post = new Post();
+    // post.title = "Test Title which is very very very teribly long because wine people don't write short titles";
+    // post.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    // post.upvotes = 15;
+    // post2.title = "Testing testing";
+    // post2.text = "Roses are red, wine is also red. Poems are hard. Wine.";
+    // post2.upvotes = 24;
+    // this.posts[0] = post;
+    // this.posts[1] = post2;
   }
 }

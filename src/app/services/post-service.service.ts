@@ -4,13 +4,14 @@ import { Post } from "./../model/post";
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
+
 const POST_BASE_URL = "http://winzelbackend20180610123655.azurewebsites.net/api/winzel";
 @Injectable()
 export class PostServiceService {
  
  constructor(private http : Http) {}
  
-  getPosts(post : Post) {
+  getPosts() {
     return this.http.get(POST_BASE_URL)
     .map((res: Response) => res.json())
         .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
