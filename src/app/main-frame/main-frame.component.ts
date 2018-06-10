@@ -2,7 +2,8 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
 import { PostServiceService } from './../services/post-service.service';
-
+import {WinzelHashTags} from "./../model/hashTags";
+import {WinzelGraps} from "./../model/winzelGraps";
 
 @Component({
   selector: 'main-frame',
@@ -20,7 +21,8 @@ export class MainFrameComponent implements OnInit {
   posts : Array<Post> = [];
   parentTitle : Post;
   modalActions1 = new EventEmitter<string|MaterializeAction>();
-  
+  currentHashTags = new WinzelHashTags();
+
   model1Params = [
     {
       dismissible: false,

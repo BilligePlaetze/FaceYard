@@ -1,5 +1,6 @@
 import { Comment } from "./comment";
 import {WinzelGraps} from "./winzelGraps";
+import {WinzelHashTags} from "./hashTags";
 
 export class Post {
     id : number;
@@ -7,7 +8,7 @@ export class Post {
     winzelText : string;
     winzelLocation : string;
     winzelGraps : WinzelGraps[];
-    winzelHashTags : string[];
+    winzelHashTags : WinzelHashTags[];
     winzelUpvotes : number;
     winzelDate : string; 
     winzelAuthor : string; 
