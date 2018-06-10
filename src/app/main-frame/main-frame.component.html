@@ -14,7 +14,7 @@
                 <div class="card-content">
                   <div class="row">
                     <div class="col s3">
-                        <h5 class="truncate" (click)="openModal1(post)">{{ post.title }}</h5>
+                        <h5 class="truncate" (click)="openModal1(post)">{{ post.winzelTitle }}</h5>
                     </div>
                     <div class="col s3 right">
                       <div class="col right">
@@ -25,12 +25,12 @@
                       </div>
                       <div class="col right">
                           <a class="btn-floating btn-medium waves-effect waves-light pink darken-4"><i class="material-icons">thumb_up</i></a>
-                          <h6 class="center-align">{{ post.upvotes }}</h6>
+                          <h6 class="center-align">{{ post.winzelUpvotes }}</h6>
                       </div>
                     </div>
                   </div>
                   <div class="col s8">
-                      <p (click)="openModal1(post)">{{ post.text }}</p>
+                      <p (click)="openModal1(post)">{{ post.winzelText }}</p>
                   </div>
                 </div>
                 <div class="card-action row">

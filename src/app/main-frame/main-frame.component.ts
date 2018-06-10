@@ -41,10 +41,10 @@ export class MainFrameComponent implements OnInit {
     });
 
     this.settings = new Post();
-    this.settings.author = "Helmut Scharnweber";
-    this.settings.grapes = ["Riesling", "Pinot Noir"];
-    this.settings.hashtags = ["Schädlingsbefall","Technik"];
-    this.settings.location = "regional";
+    this.settings.winzelAuthor = "Helmut Scharnweber";
+    this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
+    this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
+    this.settings.winzelLocation = "regional";
 
     // let post : Post = new Post();
     // let post2 : Post = new Post();
