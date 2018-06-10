@@ -27,4 +27,9 @@ createFeature(post : Post) {
         .map(res => res.json());
 }
 
+updatePost(post : Post) : Observable<Response> {
+    return this.http.put(POST_BASE_URL + '/' + post.id, post)
+    .map(res => res.json());
+}
+
 }
