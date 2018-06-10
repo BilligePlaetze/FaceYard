@@ -2,6 +2,10 @@
     padding: 8px;
 }
 
+.dropdown-button-size{
+    width: 240px !important;
+}
+
 .size-dropdown{
     width: 300px !important;
 }
