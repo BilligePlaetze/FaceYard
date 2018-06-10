@@ -1,7 +1,15 @@
+.background {
+    background: #fafafa;
+}
+
 .inputfield {
     padding-left: 20px;
 }
 
 .buttonpadded {
     padding-right: 20px;
+}
+
+.piccrop {
+    max-width: 200px !important;
 }

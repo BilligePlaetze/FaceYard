@@ -2,8 +2,11 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Post } from "./../model/post";
 import { MaterializeAction } from 'angular2-materialize';
 import { PostServiceService } from './../services/post-service.service';
+import { Comment } from "./../model/comment";
+
 import {WinzelHashTags} from "./../model/hashTags";
 import {WinzelGraps} from "./../model/winzelGraps";
+
 
 @Component({
   selector: 'main-frame',
@@ -19,13 +22,16 @@ export class MainFrameComponent implements OnInit {
 
   settings : Post;
   posts : Array<Post> = [];
+  savedPosts : Array<Post>;
+  newComment : string;
   parentTitle : Post;
+  liked : boolean[];
   modalActions1 = new EventEmitter<string|MaterializeAction>();
   currentHashTags = new WinzelHashTags();
-  winzelGrap = new WinzelGraps;
-  winzelGrap2 = new WinzelGraps;
-  winzelHashTag = new WinzelHashTags;
-  winzelHashTag2 = new WinzelHashTags;
+  winzelGrap = new WinzelGraps();
+  winzelGrap2 = new WinzelGraps();
+  winzelHashTag = new WinzelHashTags();
+  winzelHashTag2 = new WinzelHashTags();
   model1Params = [
     {
       dismissible: false,
@@ -40,13 +46,31 @@ export class MainFrameComponent implements OnInit {
     this.modalActions1.emit({action:"modal",params:['close']});
   }
 
-  updatePost(p : Post) {
-    p.winzelUpvotes ++; 
-    this.pss.updatePost(p).subscribe();
+  like(p : Post) {
+    this.liked[this.posts.indexOf(p)] =!this.liked[this.posts.indexOf(p)];
+    if (!this.liked[this.posts.indexOf(p)]){
+      p.winzelUpvotes --; 
+    } else
+    {
+      p.winzelUpvotes ++; 
+    }
+    this.updatePost(p);
   } 
 
+  updatePost(p : Post) {
+    this.pss.updatePost(p).subscribe();
+  }
+
   sendComment() {
-    
+    let c : Comment = new Comment();
+    c.text = this.newComment;
+    c.date = new Date().toString();
+    this.parentTitle.winzelComments.splice(0,0,c);
+    this.updatePost(this.parentTitle);
+  }
+
+  mockBehavoir(start: number, end: number) {
+    this.posts = this.savedPosts.slice(start, end);
   }
 
   ngOnInit(): void {
@@ -58,16 +82,21 @@ export class MainFrameComponent implements OnInit {
     this.winzelHashTag = new WinzelHashTags();
     this.winzelHashTag2 = new WinzelHashTags();
 
-    this.pss.getPosts().subscribe(x => this.posts = x, 
-    err => {
+    this.pss.getPosts().subscribe( 
+      data => {
+        this.posts = data;
+        this.savedPosts = this.posts.map(x => Object.assign({}, x));
+      }, 
+      err => {
       console.log(err);
     });
+    
+    this.liked = new Array<boolean>(this.posts.length);
 
     this.settings = new Post();
     //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
     //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
-
     this.winzelGrap.gap = "Riesling";
     this.winzelGrap2.gap = "Dornfelder";
     this.settings.winzelGraps = [this.winzelGrap, this.winzelGrap2];
@@ -75,6 +104,7 @@ export class MainFrameComponent implements OnInit {
     this.winzelHashTag2.hashTag = "Technik";
     this.settings.winzelHashTags = [this.winzelHashTag, this.winzelHashTag2];
     //this.settings.winzelLocation = "regional";
+  
 
     // let post : Post = new Post();
     // let post2 : Post = new Post();

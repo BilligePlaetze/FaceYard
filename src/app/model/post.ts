@@ -13,4 +13,5 @@ export class Post {
     winzelDate : string; 
     winzelAuthor : string; 
     winzelComments : Comment[];
+    winzelImage : string;
 }
