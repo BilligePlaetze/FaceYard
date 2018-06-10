@@ -21,7 +21,7 @@
           </div>
           </div>
         <div class="col">
-          <a class="waves-effect waves-light btn-large light-green darken-2" (click)="sendPost()">Senden</a>
+          <a class="waves-effect waves-light btn-large red  lighten-2" (click)="sendPost()">Senden</a>
 
         </div>
       </div>
@@ -38,13 +38,13 @@
   <!-- Location Dropdown Structure -->
   <ul id='grapes' class='dropdown-content size-dropdown '>
           <li *ngFor="let grape of settings.winzelGraps">
-            <a class="light-green-text text-darken-2" (click)="setGraps(grape)">{{ grape }}</a>
+            <a class="light-green-text text-darken-2" (click)="setGraps(grape)">{{ grape.gap }}</a>
           </li>
   </ul>
 
   <!-- Location Dropdown Structure -->
   <ul id='hashtag' class='dropdown-content size-dropdown' >
       <li *ngFor="let hashtag of settings.winzelHashTags">
-          <a class="light-green-text text-darken-2" (click)="setHashtag(hashtag)">{{ hashtag }}</a>
+          <a class="light-green-text text-darken-2" (click)="setHashtag(hashtag)">{{ hashtag.hashTag }}</a>
         </li>
   </ul>

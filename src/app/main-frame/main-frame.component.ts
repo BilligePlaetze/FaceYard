@@ -22,7 +22,10 @@ export class MainFrameComponent implements OnInit {
   parentTitle : Post;
   modalActions1 = new EventEmitter<string|MaterializeAction>();
   currentHashTags = new WinzelHashTags();
-
+  winzelGrap = new WinzelGraps;
+  winzelGrap2 = new WinzelGraps;
+  winzelHashTag = new WinzelHashTags;
+  winzelHashTag2 = new WinzelHashTags;
   model1Params = [
     {
       dismissible: false,
@@ -47,6 +50,14 @@ export class MainFrameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.settings = new Post();
+    this.settings.winzelGraps = [];
+    this.settings.winzelHashTags =[];
+    this.winzelGrap = new WinzelGraps();
+    this.winzelGrap2 = new WinzelGraps();
+    this.winzelHashTag = new WinzelHashTags();
+    this.winzelHashTag2 = new WinzelHashTags();
+
     this.pss.getPosts().subscribe(x => this.posts = x, 
     err => {
       console.log(err);
@@ -56,8 +67,13 @@ export class MainFrameComponent implements OnInit {
     //this.settings.winzelTitle = "Winzergenossenschaft nutzt Winzel"
     //this.settings.winzelText = "Lange träumte unser Autor von einer Flasche Château Petrus. Nun hat er sie sich gegönnt, Jahrgang 1986 für 2495 Euro – und Freunde zur Probe eingeladen. Würde der Wein schmecken? Es wurde ein denkwürd…";
     this.settings.winzelAuthor = "Helmut.Scharnweber@gmx.de";
-    this.settings.winzelGraps = ["Riesling", "Pinot Noir"];
-    this.settings.winzelHashTags = ["Schädlingsbefall","Technik"];
+
+    this.winzelGrap.gap = "Riesling";
+    this.winzelGrap2.gap = "Dornfelder";
+    this.settings.winzelGraps = [this.winzelGrap, this.winzelGrap2];
+    this.winzelHashTag.hashTag = "Schädlingsbefall";
+    this.winzelHashTag2.hashTag = "Technik";
+    this.settings.winzelHashTags = [this.winzelHashTag, this.winzelHashTag2];
     //this.settings.winzelLocation = "regional";
 
     // let post : Post = new Post();

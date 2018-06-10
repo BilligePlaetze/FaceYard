@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../model/post'
+import {WinzelGraps} from '../model/winzelGraps';
+import {WinzelHashTags} from '../model/hashTags';
 
 
 import {PostServiceService} from '../services/post-service.service'
@@ -32,10 +34,10 @@ export class CreatePostComponent implements OnInit {
   setLocation(location : string){
     this.currentPost.winzelLocation = location;
   }
-  setGraps(graps : string){
+  setGraps(graps : WinzelGraps){
     this.currentPost.winzelGraps.push(graps);
   } 
-  setHashtag(hashtag : string){
+  setHashtag(hashtag : WinzelHashTags){
     this.currentPost.winzelHashTags.push(hashtag);
   }
 }
