@@ -4,8 +4,7 @@ import { Post } from "./../model/post";
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
-
-const POST_BASE_URL = "";
+const POST_BASE_URL = "http://winzelbackend20180610123655.azurewebsites.net/api/winzel";
 @Injectable()
 export class PostServiceService {
  
@@ -22,8 +21,13 @@ deletePost(post: Post): Observable<Response> {
     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 }
 
-createFeature(post : Post) {
-    return this.http.post(POST_BASE_URL, post)
+createPost(post : Post) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(POST_BASE_URL, post, {
+        headers: headers
+      })
         .map(res => res.json());
 }
 
