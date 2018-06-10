@@ -35,6 +35,15 @@ export class MainFrameComponent implements OnInit {
     this.modalActions1.emit({action:"modal",params:['close']});
   }
 
+  updatePost(p : Post) {
+    p.winzelUpvotes ++; 
+    this.pss.updatePost(p).subscribe();
+  } 
+
+  sendComment() {
+    
+  }
+
   ngOnInit(): void {
     this.pss.getPosts().subscribe(x => this.posts = x, 
     err => {

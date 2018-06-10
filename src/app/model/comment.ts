@@ -1,5 +1,5 @@
 export class Comment {
-    author : string; 
+    id : string; 
     text : string; 
     date : string; 
 }
